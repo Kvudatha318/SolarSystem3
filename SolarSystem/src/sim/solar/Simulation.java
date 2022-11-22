@@ -1,5 +1,4 @@
 package sim.solar; 
-import sim.solar.planet.*; 
 
 import java.awt.Graphics;
 import java.lang.reflect.InvocationTargetException;
@@ -7,8 +6,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 
+import sim.solar.planet.Exhibit;
+import sim.solar.planet.NurseryInterface;
+
 class Simulation extends JPanel implements Runnable {
-   private static final Color colorBlack = new Color(0,0,0);
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9002949946589071355L;
+private static final Color colorBlack = new Color(0,0,0);
    private static final Color colorGreen = new Color(30,120,30);
    private static final int screenSize = 600;         // screen size both x and y
    private static final int screenMid = screenSize/2; // mid-screen location 
@@ -22,7 +28,7 @@ class Simulation extends JPanel implements Runnable {
    private int cycleCount = 1;       // must start at one
    private int nurseryCounter = 1;   // must start at one
    
-   private Exhibit exhibit  = new Exhibit();
+   private final Exhibit exhibit  = new Exhibit();
    private NurseryInterface nursery ;  
    private SolarSystem solarSystem  ;
 
@@ -47,9 +53,9 @@ class Simulation extends JPanel implements Runnable {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		} 
-// 	   catch (Exception e) {
-// 			e.printStackTrace();
-// 		}
+//    catch (Exception e) {
+//			e.printStackTrace();
+//		}
    }
   
 
@@ -62,34 +68,43 @@ class Simulation extends JPanel implements Runnable {
          // this will slow down display animation
          Thread.sleep(frameDelay);   
          
-         // switch to next solar system and nursery setup
-         if ((cycleCount % cyclesPerSolarSystem) == 0) {
-             nurseryCounter++; 
-             if (nurseryCounter > maxNurseryCount) {
-                nurseryCounter=1; // rollover to first nursery
-             }
-             nursery = exhibit.GetNursery("PlanetNursery"+nurseryCounter);   // get next nursery to view 
-             solarSystem = new SolarSystem(screenSize, nursery); // make a new solar system from the new nursery
-             Thread.sleep(pauseDelay);  // pause between change to next solar system
-         }
+         solarSystemSwitch();
       } 
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} 
-// 	    catch (Exception e) {
-// 			e.printStackTrace();
-// 		}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+			// catch (Exception e) {
+			// e.printStackTrace();
+			// }
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 
     }
   }
+
+
+private void solarSystemSwitch() throws ClassNotFoundException, NoSuchMethodException, InstantiationException,
+		IllegalAccessException, InvocationTargetException, InterruptedException {
+	// switch to next solar system and nursery setup
+	 if ((cycleCount % cyclesPerSolarSystem) == 0) {
+	     nurseryCounter++; 
+	     if (nurseryCounter > maxNurseryCount) {
+	        nurseryCounter=1; // rollover to first nursery
+	     }
+	     nursery = exhibit.GetNursery("PlanetNursery"+nurseryCounter);   // get next nursery to view 
+	     solarSystem = new SolarSystem(screenSize, nursery); // make a new solar system from the new nursery
+	     Thread.sleep(pauseDelay);  // pause between change to next solar system
+	 }
+}
   
   public void paintComponent(Graphics g)  {
     // clear out previous frame of drawings
