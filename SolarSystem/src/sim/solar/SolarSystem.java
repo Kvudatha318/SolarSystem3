@@ -1,14 +1,18 @@
 package sim.solar; 
-import sim.solar.planet.*; 
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList; 
+import java.util.ArrayList;
+import java.util.List;
+
+import sim.solar.planet.NurseryInterface;
+import sim.solar.planet.PlanetInterface;
+import sim.solar.planet.PlanetView; 
 
 class SolarSystem   {
    private final static Color textColor = new Color(60, 120, 200);
-   private ArrayList<PlanetInterface> planetList = new ArrayList<>();
-   private PlanetView planetView = new PlanetView();;
+   private List<PlanetInterface> planetList = new ArrayList<>();
+   private final PlanetView planetView = new PlanetView();;
    NurseryInterface nursery;
    int centerPosition; 
    
@@ -19,7 +23,7 @@ class SolarSystem   {
    }
   
   public void run() { 
-     for (PlanetInterface p : planetList) {
+     for (final PlanetInterface p : planetList) {
         p.run();
      }
   }
@@ -29,7 +33,7 @@ class SolarSystem   {
      int textY = 2*centerPosition - 20; 
      g.setColor(textColor);
      g.drawString(nursery.GetTitle() + "    " + nursery.GetAuthor(), textX, textY);
-     for (PlanetInterface p : planetList) {
+     for (final PlanetInterface p : planetList) {
         planetView.paint(g, centerPosition, p.GetX(), p.GetY(), p.GetSize(), p.GetColor()); 
      }
   }
