@@ -2,6 +2,7 @@ package sim.solar;
 import sim.solar.planet.*; 
 
 import java.awt.Graphics;
+import java.lang.reflect.InvocationTargetException;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
@@ -35,9 +36,19 @@ class Simulation extends JPanel implements Runnable {
        Thread t = new Thread (this);
        t.start ();
     }
-    catch (Exception e) {
-       e.printStackTrace(); 
-    }
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
    }
   
 
@@ -61,10 +72,19 @@ class Simulation extends JPanel implements Runnable {
              Thread.sleep(pauseDelay);  // pause between change to next solar system
          }
       } 
-      catch(Exception e)
-      {
-         e.printStackTrace();
-      }
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
     }
   }
