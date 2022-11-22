@@ -46,9 +46,10 @@ class Simulation extends JPanel implements Runnable {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
+// 	   catch (Exception e) {
+// 			e.printStackTrace();
+// 		}
    }
   
 
@@ -82,9 +83,10 @@ class Simulation extends JPanel implements Runnable {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
+// 	    catch (Exception e) {
+// 			e.printStackTrace();
+// 		}
 
     }
   }
