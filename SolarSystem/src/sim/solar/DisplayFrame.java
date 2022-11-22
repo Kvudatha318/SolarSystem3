@@ -3,7 +3,12 @@ package sim.solar;
 import javax.swing.JFrame;
 
 public class DisplayFrame extends JFrame {
-  public void Activate ()  {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3727377065873013187L;
+
+public void Activate ()  {
   
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     
