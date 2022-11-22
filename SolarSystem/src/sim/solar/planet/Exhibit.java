@@ -1,6 +1,9 @@
 package sim.solar.planet;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+//import java.lang.reflect.*;
 
 /*
  * Classname: Exhibit
@@ -32,13 +35,10 @@ public class Exhibit
          InvocationTargetException
    {
          className = "sim.solar.planet."+className; 
-         System.out.println(className) ; 
+//         System.out.println(className) ; 
          Class<?> cls = Class.forName(className);
          Class<?>[] parameters = {};
          Constructor<?> constructor = cls.getConstructor(parameters);
          return (NurseryInterface) constructor.newInstance(new Object[]{}); 
    }
 }
-
-
-
