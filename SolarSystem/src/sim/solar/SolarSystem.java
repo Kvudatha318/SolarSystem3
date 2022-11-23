@@ -11,7 +11,7 @@ import sim.solar.planet.PlanetView;
 
 class SolarSystem   {
    private final static Color textColor = new Color(60, 120, 200);
-   private List<PlanetInterface> planetList = new ArrayList<>();
+   private final List<PlanetInterface> planetList;
    private final PlanetView planetView = new PlanetView();;
    NurseryInterface nursery;
    int centerPosition; 
@@ -23,7 +23,7 @@ class SolarSystem   {
    }
   
   public void run() { 
-     for (final PlanetInterface p : planetList) {
+     for (PlanetInterface p : planetList) {
         p.run();
      }
   }
@@ -33,7 +33,7 @@ class SolarSystem   {
      int textY = 2*centerPosition - 20; 
      g.setColor(textColor);
      g.drawString(nursery.GetTitle() + "    " + nursery.GetAuthor(), textX, textY);
-     for (final PlanetInterface p : planetList) {
+     for (PlanetInterface p : planetList) {
         planetView.paint(g, centerPosition, p.GetX(), p.GetY(), p.GetSize(), p.GetColor()); 
      }
   }
