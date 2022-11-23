@@ -16,7 +16,7 @@ public class Planet implements PlanetInterface {
   private final int size; 
   private final Color color; 
   private double frequencyDrift = 1.0; // initial value 1.0 is no drift
-  private final double driftIncrement = 0.0; // 0.0 drift increment is no drift, 0.0002 is a good drift
+  private final static double driftIncrement = 0.0; // 0.0 drift increment is no drift, 0.0002 is a good drift
 
   private int mult=1;  
    
