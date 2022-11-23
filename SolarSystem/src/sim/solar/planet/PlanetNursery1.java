@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List; 
 
 public class PlanetNursery1 implements NurseryInterface {
-   private   int angle;
+//   private   int angle;
 //   private   int orbit;
 //   private   int increment;
 //   private   int planetSize;
@@ -22,7 +22,7 @@ public class PlanetNursery1 implements NurseryInterface {
      
     public List<PlanetInterface> Produce () {
     	List<PlanetInterface> planetList = new ArrayList<>();
-        angle = 0; 
+        int angle = 0; 
         int numPlanets = 90;  // sets number of planets created and range of i 
         for (int i=0; i<numPlanets; i++) {
             angle    = angle + 5;   // controls offset between planets
